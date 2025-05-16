@@ -1,0 +1,1 @@
+firebase deploy --only hosting:fe-sooft-technology-challenge-54540
