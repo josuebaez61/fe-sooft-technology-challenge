@@ -1,13 +1,13 @@
 import classNames from "classnames";
 
-type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
+type TextareaProps = React.DetailedHTMLProps<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
 > & {};
 
-export default function Input({ ...props }: InputProps) {
+export default function Textarea({ ...props }: TextareaProps) {
   return (
-    <input
+    <textarea
       {...props}
       className={classNames(
         props.className,

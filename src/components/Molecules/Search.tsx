@@ -10,7 +10,7 @@ export default function Search({ onChange }: SearchProps) {
     <div>
       <h2 className="text-center text-golden text-2xl mb-3">Buscador</h2>
       <div className="mb-3">
-        <Input onChange={onChange} />
+        <Input className="border-white" onChange={onChange} />
       </div>
       <div className="flex justify-end">
         <ClickableText className="text-white" text="Limpiar Filtros" />
