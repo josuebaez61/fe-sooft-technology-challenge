@@ -1,5 +1,6 @@
 
 @import "tailwindcss";
+@import "animate.css";
 
 @font-face {
   font-family: 'Trajan Pro';
@@ -13,12 +14,26 @@
   font-weight: 700;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Shamson Signature Regular';
+  src: url('./assets/fonts/Shamson-Signature-Regular.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
 
 
 :root {
   font-family: 'Trajan Pro', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+}
+
+.font-trajan {
+  font-family: 'Trajan Pro', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.font-signature {
+  font-family: 'Shamson Signature Regular', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 @theme {

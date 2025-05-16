@@ -1,8 +1,17 @@
 import type { PropsWithChildren } from "react";
 import "./Card.scss";
+import classNames from "classnames";
 
-function Card({ children }: PropsWithChildren) {
-  return <div className="card border border-golden p-5">{children}</div>;
+interface CardProps extends PropsWithChildren {
+  className?: string;
+}
+
+function Card({ children, className }: CardProps) {
+  return (
+    <div className={classNames("card border border-golden p-5", className)}>
+      {children}
+    </div>
+  );
 }
 
 Card.Body = function ({ children }: PropsWithChildren) {

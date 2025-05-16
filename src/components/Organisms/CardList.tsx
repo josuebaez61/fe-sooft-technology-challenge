@@ -1,24 +1,32 @@
+import type { Quote } from "../../models";
+import Signature from "../Atoms/Signature";
+import Spinner from "../Atoms/Spinner";
 import Card from "../Molecules/Card";
-import Search from "../Molecules/Search";
 
-export default function CardList() {
+interface CardListProps {
+  quotes: Quote[];
+  isLoading?: boolean;
+}
+
+export default function CardList({ quotes, isLoading }: CardListProps) {
   return (
-    <div className="grid grid-cols gap-4">
-      <div className="mb-5 w-full">
-        <Search />
-      </div>
-      <Card>
-        <Card.Body>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci eum
-          nisi cum distinctio rem, aliquid exercitationem tenetur vitae iure
-          expedita laborum nam pariatur quam ducimus ad magni non veritatis
-          voluptate.
-        </Card.Body>
-      </Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-    </div>
+    <>
+      {isLoading ? (
+        <div className="flex justify-center">
+          <Spinner />
+        </div>
+      ) : (
+        <div className="grid grid-cols gap-4">
+          {quotes.map((quote, index) => (
+            <Card className="animate__animated animate__fadeIn" key={index}>
+              <Card.Body>
+                <p>{quote.quote}</p>
+                <Signature className="text-end" text={quote.author} />
+              </Card.Body>
+            </Card>
+          ))}
+        </div>
+      )}
+    </>
   );
 }

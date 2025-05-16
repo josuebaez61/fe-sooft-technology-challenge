@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { quotesReducer } from "./quotes/quotesReducer";
+import quotesSlice from "./quotes/quotesSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      quotes: quotesReducer,
+      quotes: quotesSlice,
     },
     devTools: process.env.NODE_ENV !== "production",
   });
