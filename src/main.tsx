@@ -8,7 +8,7 @@ import StoreProvider from "./StoreProvider.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <StoreProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/fe-sooft-technology-challenge/">
         <Routes>
           <Route path="/" element={<App />} />
         </Routes>
