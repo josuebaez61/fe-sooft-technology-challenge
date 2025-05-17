@@ -6,7 +6,7 @@ import {
   fetchQuotes,
 } from "../../lib/redux/quotes/quotesThunks";
 import DefaultLayout from "../Templates/DefaultLayout";
-import CardList from "../Organisms/CardList";
+import QuoteList from "../Organisms/QuoteList";
 import QuoteModalForm from "../Organisms/QuoteModalForm";
 import SearchSection from "../Organisms/SearchSection";
 import { debounceTime, Subject, Subscription } from "rxjs";
@@ -72,7 +72,7 @@ export default function HomePage() {
         showClearSearchButton={!!currentSearch}
         value={searchValue}
       />
-      <CardList
+      <QuoteList
         loadError={loadError}
         isLoading={isLoading}
         onDeleteQueue={onDeleteQueue}

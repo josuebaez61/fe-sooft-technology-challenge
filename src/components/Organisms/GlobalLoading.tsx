@@ -8,12 +8,10 @@ export default function GlobalLoading() {
   if (!loading) return null;
 
   return (
-    <>
-      <Overlay>
-        <div className="flex justify-center items-center h-screen">
-          <Spinner />
-        </div>
-      </Overlay>
-    </>
+    <Overlay>
+      <div className="flex justify-center items-center h-screen">
+        <Spinner />
+      </div>
+    </Overlay>
   );
 }

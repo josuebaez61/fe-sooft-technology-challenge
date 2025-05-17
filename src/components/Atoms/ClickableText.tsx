@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-interface ClickableTextProps {
+export interface ClickableTextProps {
   text?: string;
   className?: string;
   onClick?: () => void;

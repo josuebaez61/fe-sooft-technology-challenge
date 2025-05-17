@@ -1,5 +1,5 @@
 import TextGolden from "../Atoms/TextGolden";
-import Search from "../Molecules/SearchInput";
+import SearchInput from "../Molecules/SearchInput";
 import classNames from "classnames";
 
 interface SearchSectionProps {
@@ -22,7 +22,7 @@ export default function SearchSection({
       <h2 className="text-center text-2xl mb-3">
         <TextGolden>Buscador</TextGolden>
       </h2>
-      <Search
+      <SearchInput
         value={value}
         showClearSearchButton={showClearSearchButton}
         onChange={onChange}

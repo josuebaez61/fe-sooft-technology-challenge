@@ -11,7 +11,7 @@ interface CardListProps {
   onDeleteQueue: (quoteId: string) => void;
 }
 
-export default function CardList({
+export default function QuoteList({
   isLoading,
   quotes,
   loadError,

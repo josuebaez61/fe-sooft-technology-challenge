@@ -1,6 +1,6 @@
 import ListMessage from "../Atoms/ListMessage";
 
-interface LoadErrorMessageProps {
+export interface LoadErrorMessageProps {
   className?: string;
   message: string;
 }

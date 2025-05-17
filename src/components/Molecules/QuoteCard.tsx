@@ -5,7 +5,7 @@ import ClickableText from "../Atoms/ClickableText";
 import QuoteText from "../Atoms/QuoteText";
 import TextGolden from "../Atoms/TextGolden";
 
-interface QuoteCardProps {
+export interface QuoteCardProps {
   quote: Quote;
   onDelete: (quoteId: string) => void;
 }

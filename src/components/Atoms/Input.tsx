@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-type InputProps = React.DetailedHTMLProps<
+export type InputProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {};
