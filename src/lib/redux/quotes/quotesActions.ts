@@ -1,6 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
 
-// Cambia para que reciba un string como payload
 export const setCurrentSearchValue = createAction<string | null>(
   "quotes/setCurrentSearchValue"
 );

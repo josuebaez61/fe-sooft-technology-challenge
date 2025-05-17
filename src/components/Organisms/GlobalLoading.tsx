@@ -9,10 +9,11 @@ export default function GlobalLoading() {
 
   return (
     <>
-      <Overlay isVisible />
-      <div className="fixed inset-0 z-50 flex items-center justify-center animate__animated animate__fadeIn animate__faster">
-        <Spinner />
-      </div>
+      <Overlay>
+        <div className="flex justify-center items-center h-screen">
+          <Spinner />
+        </div>
+      </Overlay>
     </>
   );
 }

@@ -8,13 +8,11 @@ interface CardProps extends PropsWithChildren {
 }
 
 function Card({ children, className }: CardProps) {
-  // Separa Header, Body y Footer de los children
   const header: ReactNode[] = [];
   const body: ReactNode[] = [];
   const footer: ReactNode[] = [];
   const others: ReactNode[] = [];
 
-  // Normaliza children a array y clasifica
   (Array.isArray(children) ? children : [children]).forEach((child) => {
     if (
       child &&
@@ -63,7 +61,7 @@ const CardHeader = function ({ children }: PropsWithChildren) {
 CardHeader.displayName = "CardHeader";
 
 const CardBody = function ({ children }: PropsWithChildren) {
-  return <div className="card-body text-golden">{children}</div>;
+  return <div className="card-body">{children}</div>;
 };
 CardBody.displayName = "CardBody";
 

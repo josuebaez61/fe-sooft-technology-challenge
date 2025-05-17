@@ -2,6 +2,8 @@ import Card from "./Card";
 import Signature from "../Atoms/Signature";
 import type { Quote } from "../../models";
 import ClickableText from "../Atoms/ClickableText";
+import QuoteText from "../Atoms/QuoteText";
+import TextGolden from "../Atoms/TextGolden";
 
 interface QuoteCardProps {
   quote: Quote;
@@ -19,17 +21,21 @@ export default function QuoteCard({ quote, onDelete }: QuoteCardProps) {
     <Card className="group">
       <Card.Body>
         <div className="flex items-start justify-between gap-2">
-          <p className="flex-1">{quote.quote}</p>
+          <p className="flex-1">
+            <QuoteText quote={quote.quote} />
+          </p>
           <div
             className={
               "flex items-center gap-2 transition-opacity duration-200 opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
             }
           >
-            <ClickableText
-              onClick={handleDelete}
-              className="text-xl"
-              text="Eliminar"
-            />
+            <TextGolden>
+              <ClickableText
+                onClick={handleDelete}
+                className="text-xl"
+                text="Eliminar"
+              />
+            </TextGolden>
           </div>
         </div>
         <div className="mt-4">

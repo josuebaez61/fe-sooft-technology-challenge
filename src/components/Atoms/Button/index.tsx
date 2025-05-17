@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import "./index.scss";
 import Spinner from "../Spinner";
+import TextGolden from "../TextGolden";
 
 interface ButtonProps {
   children?: React.ReactNode;
@@ -21,13 +22,15 @@ export default function Button({
     <button
       onClick={onClick}
       className={classNames(
-        "button border border-golden py-2 px-3 flex items-center justify-center gap-2 text-golden cursor-pointer",
+        "button border border-golden py-2 px-3 flex items-center justify-center gap-2 cursor-pointer",
         className
       )}
       disabled={isLoading || disabled}
     >
-      {isLoading && <Spinner className="text-xl" />}
-      {children}
+      <TextGolden className="inline-block">
+        {isLoading && <Spinner className="text-xl mr-2" />}
+        {children}
+      </TextGolden>
     </button>
   );
 }
