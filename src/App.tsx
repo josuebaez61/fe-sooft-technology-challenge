@@ -1,7 +1,13 @@
+import GlobalLoading from "./components/Organisms/GlobalLoading";
 import Router from "./router";
 
 function App() {
-  return <Router />;
+  return (
+    <>
+      <GlobalLoading />
+      <Router />;
+    </>
+  );
 }
 
 export default App;

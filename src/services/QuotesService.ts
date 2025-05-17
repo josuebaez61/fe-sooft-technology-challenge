@@ -1,12 +1,22 @@
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../firebase";
-import type { Quote } from "../models";
+import type { CreateQuotePayload, Quote } from "../models";
 
 export class QuotesService {
+  static readonly collectionName = "quotes";
+
   static async getQuotes(searchValue?: string): Promise<Quote[]> {
-    const quotesCol = collection(db, "quotes");
+    const quotesCol = collection(db, QuotesService.collectionName);
     const quoteSnapshot = await getDocs(quotesCol);
-    let quotes = quoteSnapshot.docs.map((doc) => doc.data() as Quote);
+    let quotes = quoteSnapshot.docs.map(
+      (doc) => ({ ...doc.data(), id: doc.id } as Quote)
+    );
 
     if (searchValue && searchValue.trim() !== "") {
       const search = searchValue.trim().toLowerCase();
@@ -18,5 +28,20 @@ export class QuotesService {
     }
 
     return quotes;
+  }
+
+  static async createQuote(quote: CreateQuotePayload): Promise<Quote> {
+    const quotesCol = collection(db, QuotesService.collectionName);
+    const docRef = await addDoc(quotesCol, quote);
+    return {
+      ...quote,
+      id: docRef.id,
+    } as Quote;
+  }
+
+  static async deleteQuote(id: string): Promise<{ id: string }> {
+    const quoteDoc = doc(db, QuotesService.collectionName, id);
+    await deleteDoc(quoteDoc);
+    return { id };
   }
 }

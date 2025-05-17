@@ -1,25 +1,67 @@
-import Modal from "../Molecules/Modal";
+import Modal from "./Modal";
 import Button from "../Atoms/Button";
-import FormField from "../Molecules/FormField";
-import Input from "../Atoms/Input";
-import Textarea from "../Atoms/Textarea";
+import { useForm } from "react-hook-form";
+import type {
+  CreateQuotePayload,
+  QuoteForm as QuoteFormModel,
+} from "../../models";
+import QuoteForm from "../Molecules/QuoteForm";
+import { useEffect } from "react";
 
-type QuoteModalFormProps = {
+interface QuoteModalFormProps {
   visible?: boolean;
+  isCreating?: boolean;
+  onCreate: (formValue: CreateQuotePayload) => void;
   onClose?: () => void;
-  onSave?: () => void;
-};
+  createError?: string | null;
+}
 
 export default function QuoteModalForm({
+  isCreating,
   visible,
+  onCreate,
   onClose,
-  onSave,
+  createError,
 }: QuoteModalFormProps) {
+  const { control, handleSubmit, reset } = useForm<QuoteFormModel>();
+
+  useEffect(() => {
+    if (!visible) {
+      reset();
+    }
+  }, [visible, reset]);
+
+  useEffect(() => {
+    if (createError) {
+      alert(createError);
+    }
+  }, [createError]);
+
+  const onSubmit = async (formValue: QuoteFormModel) => {
+    if (!formValue.author) {
+      alert("El autor es requerido");
+      return;
+    }
+    if (!formValue.quote) {
+      alert("La cita es requerida");
+      return;
+    }
+    const payload: CreateQuotePayload = {
+      author: formValue.author,
+      quote: formValue.quote,
+    };
+    onCreate(payload);
+  };
+
   const renderModalFooter = () => {
     return (
       <div className="flex justify-end gap-2">
-        <Button onClick={onSave}>Guardar</Button>
-        <Button onClick={onClose}>Cancelar</Button>
+        <Button isLoading={isCreating} onClick={handleSubmit(onSubmit)}>
+          Guardar
+        </Button>
+        <Button disabled={isCreating} onClick={onClose}>
+          Cancelar
+        </Button>
       </div>
     );
   };
@@ -30,12 +72,7 @@ export default function QuoteModalForm({
       footer={renderModalFooter}
       onClose={onClose}
     >
-      <FormField label="Frase">
-        <Textarea />
-      </FormField>
-      <FormField label="Autor">
-        <Input />
-      </FormField>
+      <QuoteForm control={control} />
     </Modal>
   );
 }

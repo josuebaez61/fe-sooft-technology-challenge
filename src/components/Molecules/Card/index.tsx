@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { PropsWithChildren, ReactNode } from "react";
-import "./Card.scss";
+import "./index.scss";
 import classNames from "classnames";
 
 interface CardProps extends PropsWithChildren {

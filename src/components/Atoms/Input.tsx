@@ -5,10 +5,13 @@ type InputProps = React.DetailedHTMLProps<
   HTMLInputElement
 > & {};
 
-export default function Input({ ...props }: InputProps) {
+export default function Input({ value, ...props }: InputProps) {
+  const controlledValue = value !== undefined && value !== null ? value : "";
+
   return (
     <input
       {...props}
+      value={controlledValue}
       className={classNames(
         props.className,
         "w-full",

@@ -21,11 +21,18 @@
   font-style: normal;
 }
 
+@theme {
+  --color-golden: #E6D1B2;
+  --color-backdrop: rgba(0, 0, 0, 0.50);
+}
+
 
 :root {
   font-family: 'Trajan Pro', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  background: #080503;
+
 }
 
 .font-trajan {
@@ -34,10 +41,6 @@
 
 .font-signature {
   font-family: 'Shamson Signature Regular', system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-
-@theme {
-  --color-golden: #E6D1B2;
 }
 
 

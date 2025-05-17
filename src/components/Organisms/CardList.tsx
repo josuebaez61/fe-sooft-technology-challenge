@@ -1,38 +1,36 @@
-import type { Quote } from "../../models";
-import Signature from "../Atoms/Signature";
+import EmptyMessage from "../Molecules/EmptyMessage";
+import QuoteCard from "../Molecules/QuoteCard";
 import Spinner from "../Atoms/Spinner";
-import Card from "../Molecules/Card";
-import Search from "../Molecules/Search";
+import type { Quote } from "../../models";
+import LoadErrorMessage from "../Molecules/LoadErrorMessage";
 
 interface CardListProps {
   quotes: Quote[];
-  isLoading?: boolean;
-  onSearchChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isLoading: boolean;
+  loadError: string | null;
+  onDeleteQueue: (quoteId: string) => void;
 }
 
 export default function CardList({
-  quotes,
   isLoading,
-  onSearchChange,
+  quotes,
+  loadError,
+  onDeleteQueue,
 }: CardListProps) {
   return (
     <>
-      <div className="mb-5 w-full">
-        <Search onChange={onSearchChange} />
-      </div>
       {isLoading ? (
         <div className="flex justify-center">
           <Spinner />
         </div>
+      ) : loadError ? (
+        <LoadErrorMessage message={loadError} />
+      ) : quotes.length === 0 ? (
+        <EmptyMessage />
       ) : (
         <div className="grid grid-cols gap-4">
           {quotes.map((quote, index) => (
-            <Card className="animate__animated animate__fadeIn" key={index}>
-              <Card.Body>
-                <p>{quote.quote}</p>
-                <Signature className="text-end" text={quote.author} />
-              </Card.Body>
-            </Card>
+            <QuoteCard key={index} onDelete={onDeleteQueue} quote={quote} />
           ))}
         </div>
       )}

@@ -5,10 +5,13 @@ type TextareaProps = React.DetailedHTMLProps<
   HTMLTextAreaElement
 > & {};
 
-export default function Textarea({ ...props }: TextareaProps) {
+export default function Textarea({ value, ...props }: TextareaProps) {
+  const controlledValue = value !== undefined && value !== null ? value : "";
+
   return (
     <textarea
       {...props}
+      value={controlledValue}
       className={classNames(
         props.className,
         "w-full",
