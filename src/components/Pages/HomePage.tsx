@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../lib/redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../lib/redux/hooks";
 import {
   createQuote,
   deleteQuote,
   fetchQuotes,
-} from "../../../lib/redux/quotes/quotesThunks";
-import DefaultLayout from "../../Templates/DefaultLayout";
-import CardList from "../../Organisms/CardList";
-import QuoteModalForm from "../../Organisms/QuoteModalForm";
-import SearchSection from "../../Organisms/SearchSection";
+} from "../../lib/redux/quotes/quotesThunks";
+import DefaultLayout from "../Templates/DefaultLayout";
+import CardList from "../Organisms/CardList";
+import QuoteModalForm from "../Organisms/QuoteModalForm";
+import SearchSection from "../Organisms/SearchSection";
 import { debounceTime, Subject, Subscription } from "rxjs";
-import type { CreateQuotePayload } from "../../../models";
-import { hideQuoteModalForm } from "../../../lib/redux/quotes/quotesActions";
+import type { CreateQuotePayload } from "../../models";
+import { hideQuoteModalForm } from "../../lib/redux/quotes/quotesActions";
 
 export default function HomePage() {
   const dispatch = useAppDispatch();
