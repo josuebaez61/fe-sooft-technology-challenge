@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import QuoteModalForm from "../../../components/Organisms/QuoteModalForm";
+import QuoteModalForm from "../src/components/Organisms/QuoteModalForm";
 
 describe("QuoteModalForm", () => {
   const onCreate = jest.fn();

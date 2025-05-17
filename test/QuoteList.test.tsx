@@ -1,20 +1,20 @@
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
-import QuoteList from "../../../components/Organisms/QuoteList";
-import type { Quote } from "../../../models";
-import type { QuoteCardProps } from "../../../components/Molecules/QuoteCard";
-import type { LoadErrorMessageProps } from "../../../components/Molecules/LoadErrorMessage";
+import QuoteList from "../src/components/Organisms/QuoteList";
+import { Quote } from "../src/models";
+import { LoadErrorMessageProps } from "../src/components/Molecules/LoadErrorMessage";
+import { QuoteCardProps } from "../src/components/Molecules/QuoteCard";
 
-jest.mock("../../../components/Molecules/EmptyMessage", () => () => (
+jest.mock("../src/components/Molecules/EmptyMessage", () => () => (
   <div data-testid="empty-message">No quotes</div>
 ));
 jest.mock(
-  "../../../components/Molecules/LoadErrorMessage",
+  "../src/components/Molecules/LoadErrorMessage",
   () => (props: LoadErrorMessageProps) =>
     <div data-testid="error-message">{props.message}</div>
 );
 jest.mock(
-  "../../../components/Molecules/QuoteCard",
+  "../src/components/Molecules/QuoteCard",
   () => (props: QuoteCardProps) =>
     (
       <div
@@ -25,7 +25,7 @@ jest.mock(
       </div>
     )
 );
-jest.mock("../../../components/Atoms/Spinner", () => () => (
+jest.mock("../src/components/Atoms/Spinner", () => () => (
   <div data-testid="spinner">Loading...</div>
 ));
 

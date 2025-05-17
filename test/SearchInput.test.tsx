@@ -1,10 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import SearchInput from "../../../components/Molecules/SearchInput";
+import SearchInput from "../src/components/Molecules/SearchInput";
 import "@testing-library/jest-dom";
-import type { ClickableTextProps } from "../../../components/Atoms/ClickableText";
-import type { InputProps } from "../../../components/Atoms/Input";
+import type { ClickableTextProps } from "../src/components/Atoms/ClickableText";
+import type { InputProps } from "../src/components/Atoms/Input";
 
-jest.mock("../../../components/Atoms/Input", () => (props: InputProps) => (
+jest.mock("../src/components/Atoms/Input", () => (props: InputProps) => (
   <input
     data-testid="search-input"
     value={props.value}
@@ -15,7 +15,7 @@ jest.mock("../../../components/Atoms/Input", () => (props: InputProps) => (
 ));
 
 jest.mock(
-  "../../../components/Atoms/ClickableText",
+  "../src/components/Atoms/ClickableText",
   () => (props: ClickableTextProps) =>
     (
       <button
